@@ -4,61 +4,68 @@ using UnityEngine;
 
 public class Torpedo : MonoBehaviour
 {
+    #region Initialisation
+
+    [Header("Speed")]
     public Rigidbody rb;
     public float initialForce = 5f;
     public float forwardForce = 0.2f;
 
+    [Header("Rotation")]
     public float rotationSpeedModifier = 0f;
     private float rotationSpeed;
-    public GameObject explosion;
-    public Light torpedoLight;
 
     [Header("Radar")]
     public float radarLength = 2f;
     public float radarRadius = 2f;
     public float focusSpeed = 2f;
 
-    Collider[] playersFound;
-    Transform foundPlayer;
+    Collider[] targetFound;
+    Transform foundTarget;
     Vector3 directionTowardsPlayer;
     Quaternion rotationTowardsPlayer;
     float distanceToPlayer;
+
+    [Header("Effects")]
+    public GameObject explosion;
+    public Light torpedoLight;
+
+    #endregion
+
+    #region Initialisation
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    #endregion
+
+    #region Déplacement
+
     void FixedUpdate()
     {
         rotationSpeed = transform.InverseTransformVector(rb.velocity).z * rotationSpeedModifier;
 
-        rb.AddRelativeForce(0f, 0f, forwardForce * Time.deltaTime,ForceMode.VelocityChange);
+        rb.AddRelativeForce(0f, 0f, forwardForce * Time.deltaTime, ForceMode.VelocityChange);
         transform.Rotate(new Vector3(0f, 0f, rotationSpeed * Time.deltaTime), Space.Self);
 
         Radar();
     }
 
+    #endregion
+
+    #region Contact et explosion
+
     private void OnBecameInvisible()
     {
-        Explode();
+        Explode(); // Détruit l'objet si il sort du champ de vision de la caméra
     }
 
     private void OnCollisionEnter(Collision collisionInfo)
     {
-        // FAIT EXPLOSER LE JOUEUR TOUCHE
-
-        //if (collisionInfo.collider.CompareTag("Player"))
-        //{
-        //    GameObject collider = collisionInfo.collider.gameObject;
-        //    collider.GetComponentInParent<DestroyOnCrash>().Destroy();
-        //}
-
-        if (!collisionInfo.collider.CompareTag("Torpedo"))
-        {
-            Instantiate(explosion, transform);
-            Explode();
-        }
+        Instantiate(explosion, transform);
+        Explode();
     }
 
     private void Explode()
@@ -70,27 +77,31 @@ public class Torpedo : MonoBehaviour
             Destroy(child.gameObject, 5f);
         }
 
-        transform.DetachChildren();
+        transform.DetachChildren(); // Se détache de l'explosion avant d'être détruit
         Destroy(gameObject);
     }
 
+    #endregion
+
+    #region Radar
+
     private void Radar()
     {
-        playersFound = Physics.OverlapCapsule(transform.position + 1f * transform.forward, transform.position + (radarLength + 1f) * transform.forward, radarRadius, 1 << 8 | 1 << 9);
-        
-        if (playersFound.Length > 0)
+        targetFound = Physics.OverlapCapsule(transform.position + 1f * transform.forward, transform.position + (radarLength + 1f) * transform.forward, radarRadius, 1 << 8 | 1 << 9); // Détecte les objets dans les layers "joueurs" et "projectiles"
+
+        if (targetFound.Length > 0)
         {
             int t = FindTarget();
 
             if (t >= 0)
             {
-                foundPlayer = playersFound[t].transform;
-                directionTowardsPlayer = (foundPlayer.position - transform.position).normalized;
+                foundTarget = targetFound[t].transform;
+                directionTowardsPlayer = (foundTarget.position - transform.position).normalized;
                 rotationTowardsPlayer = Quaternion.LookRotation(directionTowardsPlayer);
 
-                distanceToPlayer = Vector3.Distance(transform.position, foundPlayer.position);
+                distanceToPlayer = Vector3.Distance(transform.position, foundTarget.position);
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotationTowardsPlayer, Time.deltaTime * focusSpeed / distanceToPlayer);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotationTowardsPlayer, Time.deltaTime * focusSpeed / distanceToPlayer); // La torpille se focalise d'autant plus sur la cible si elle est proche
             }
         }
     }
@@ -99,7 +110,7 @@ public class Torpedo : MonoBehaviour
     {
         int t = 0;
 
-        foreach (Collider target in playersFound)
+        foreach (Collider target in targetFound)
         {
             if (target.gameObject != gameObject)
             {
@@ -110,4 +121,6 @@ public class Torpedo : MonoBehaviour
 
         return -1;
     }
+
+    #endregion
 }

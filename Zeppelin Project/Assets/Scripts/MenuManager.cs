@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
+    #region Déclaration des variables
+
     public Canvas settings;
     public CanvasScaler settingsScaler;
     public GameObject settingsFirstButton;
@@ -15,32 +17,22 @@ public class MenuManager : MonoBehaviour
     static public bool displaySettings = false;
     public ButtonManager settingsButtonManager;
 
+    #endregion
+
+    #region Initialisation
+
     private void Start()
-    {
-        if (displaySettings)
         {
-            Invoke("DisplaySettings", 0.01f);
-            displaySettings = false;
+            if (displaySettings)
+            {
+                Invoke("DisplaySettings", 0.01f);
+                displaySettings = false;
+            }
         }
-    }
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene(Settings.levelToLoad);
-    }
+    #endregion
 
-    public void DisplaySettings()
-    {
-        settings.enabled = true;
-        settingsScaler.enabled = true;
-        EventSystem.current.SetSelectedGameObject(settingsFirstButton);
-
-        settingsButtonManager.ManageAnimator(true);
-
-        menuCanvas.SetActive(false);
-
-        title.SetActive(false);
-    }
+    #region Affichage menu / paramètres
 
     public void Menu()
     {
@@ -48,12 +40,42 @@ public class MenuManager : MonoBehaviour
         settingsScaler.enabled = false;
 
         menuCanvas.SetActive(true);
-
         title.SetActive(true);
     }
+
+    public void DisplaySettings()
+    {
+        settings.enabled = true;
+        settingsScaler.enabled = true;
+        EventSystem.current.SetSelectedGameObject(settingsFirstButton); // Pour navigation menu à la manette
+
+        settingsButtonManager.ManageAnimator(true); // Animation d'entrée des bouttons
+
+        menuCanvas.SetActive(false);
+        title.SetActive(false);
+    }
+
+    #endregion
+
+    #region Commandes du menu 
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(Settings.levelToLoad);
+    }
+
+    
 
     public void Quit()
     {
         Application.Quit();
     }
+
+    #endregion
+
+    
+
+    
+
+    
 }

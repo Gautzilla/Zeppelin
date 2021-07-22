@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MaxAmmoDestroyed : MonoBehaviour
 {
+    // Attribue le nombre maximum de résidus de projectile au script de paramètres
+
     public Settings settings;
 
     void Start()

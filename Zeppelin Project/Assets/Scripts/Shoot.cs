@@ -81,7 +81,8 @@ public class Shoot : MonoBehaviour
 
     void CountSpecialAmmoShot()
     {
-        if (specialAmmoShot++ >= specialAmmoStock)
+        specialAmmoShot++;
+        if (specialAmmoShot >= specialAmmoStock)
         {
             ChangeAmmoType(0);
             reloadTime = 1f;
@@ -106,11 +107,11 @@ public class Shoot : MonoBehaviour
         switch (ammoIdentifier)
         {
             case 1:
-                specialAmmoStock = 4;
+                specialAmmoStock = 5;
                 reloadTime = reloadTimeTorpedo;
                 break;
             case 2:
-                specialAmmoStock = 1;
+                specialAmmoStock = 2;
                 break;
             default:
                 loadingDisplay.DisplayShootLoading(1f);

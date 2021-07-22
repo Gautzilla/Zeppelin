@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class OpenKeysConfiguration : MonoBehaviour
 {
+
+    #region Déclaration des variables
+
     public GameObject menu;
     public GameObject keysConfiguration;
 
-    public void KeysConfiguration()
+    #endregion
+
+    public void KeysConfiguration() // Ferme les paramètres du joueur et affiche les boutons de configuration de touches
     {
         keysConfiguration.SetActive(true);
         gameObject.SetActive(false);

@@ -5,10 +5,16 @@ using UnityEngine.UI;
 
 public class ShootLoading : MonoBehaviour
 {
+    #region Déclaration des variables
+
     public Slider slider;
     public Image fill;
 
-    public Color[] fillColors = new Color[2] { new Color(0.74f, 0.46f, 0.46f, 1f), new Color(1f, 1f, 1f, 1f)};
+    public Color[] fillColors = new Color[2] { new Color(0.74f, 0.46f, 0.46f, 1f), new Color(1f, 1f, 1f, 1f) }; // Couleurs pendant et après le chargement
+
+    #endregion
+
+    #region Affichage de la barre de chargement
 
     public void DisplayShootLoading(float loading)
     {
@@ -17,12 +23,8 @@ public class ShootLoading : MonoBehaviour
 
     public void fillColor(bool isReadyToShoot)
     {
-        if (!isReadyToShoot)
-        {
-            fill.color = fillColors[0];
-        } else
-        {
-            fill.color = fillColors[1];
-        }
+        fill.color = isReadyToShoot ? fillColors[1] : fillColors[0];
     }
+
+    #endregion
 }
