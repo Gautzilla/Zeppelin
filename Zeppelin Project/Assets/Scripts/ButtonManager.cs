@@ -106,8 +106,7 @@ public class ButtonManager : MonoBehaviour
             }
             buttonsAreDisplayed = true;
             EventSystem.current.SetSelectedGameObject(firstButtonToSelect);
-        }
-        else
+        } else
         {
             foreach (Animator animator in animators)
             {
