@@ -45,6 +45,8 @@ public class CheckpointGroup : MonoBehaviour
                 checkpoints[child.GetComponentInChildren<Checkpoint>().checkpointIdentifier - 1] = child; // Ordonne les checkpoints dans le tableau checkpoints
             }
         }
+
+        SetCheckpointColor(0);
     }
 
     #endregion
@@ -153,6 +155,33 @@ public class CheckpointGroup : MonoBehaviour
     public void SetActiveCheckpoint(int checkpoint)
     {
         lastActiveCheckpoint = checkpoint;
+
+        SetCheckpointColor(checkpoint);
+    }
+
+    private void SetCheckpointColor(int activeCheckpoint) // Allume en vert les lumières du checkpoint actif
+    {
+        int i = 0;
+        foreach (Transform checkpoint in checkpoints)
+        {
+            foreach (Transform child in checkpoint)
+            {
+                if (child.GetComponent<Renderer>() != null) // On ne traîte pas le trigger : seulement les deux pilones
+                {
+                    Material emissiveMat = child.GetComponent<Renderer>().materials[1]; // Le material de la lampe est le deuxième
+
+                    if (i == activeCheckpoint)
+                    {
+                        emissiveMat.SetColor("_EmissionColor", new Color(0, 1, 0, 3f));
+                    } else
+                    {
+                        emissiveMat.SetColor("_EmissionColor", new Color(1, 0, 0, 3f));
+                    }
+                }
+            }
+
+            i++;
+        }
     }
 
     #endregion
