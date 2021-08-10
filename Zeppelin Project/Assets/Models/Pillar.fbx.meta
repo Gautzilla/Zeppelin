@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: ae781f89915747c479175c42007930ef
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 21100
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -14,6 +14,26 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: CheckpointEmission
     second: {fileID: 2100000, guid: c7bdaad4421b5174d9f5e8c0020d5a6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CheckpointEmission1
+    second: {fileID: 2100000, guid: c7bdaad4421b5174d9f5e8c0020d5a6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CheckpointEmission2
+    second: {fileID: 2100000, guid: 4ea97fed096599248913c8f1832b37d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CheckpointEmission3
+    second: {fileID: 2100000, guid: 04565db1543eb474e9f55fe15ae183b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CheckpointEmission4
+    second: {fileID: 2100000, guid: ff298b93479b910469dc806e42323614, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -53,11 +73,13 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -67,6 +89,9 @@ ModelImporter:
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -100,6 +125,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

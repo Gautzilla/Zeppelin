@@ -46,7 +46,7 @@ public class CheckpointGroup : MonoBehaviour
             }
         }
 
-        SetCheckpointColor(0);
+        SetCheckpointsColors(0);
     }
 
     #endregion
@@ -155,32 +155,36 @@ public class CheckpointGroup : MonoBehaviour
     public void SetActiveCheckpoint(int checkpoint)
     {
         lastActiveCheckpoint = checkpoint;
-
-        SetCheckpointColor(checkpoint);
     }
 
-    private void SetCheckpointColor(int activeCheckpoint) // Allume en vert les lumières du checkpoint actif
+    public void SetCheckpointsColors(int activeCheckpoint) // Allume une lumière de la couleur du joueur dont le checkpoint est actif
     {
-        int i = 0;
-        foreach (Transform checkpoint in checkpoints)
+        for (int j = 0; j < Settings.numberOfPlayers; j++)
         {
-            foreach (Transform child in checkpoint)
+            int i = 0;
+            foreach (Transform checkpoint in checkpoints)
             {
-                if (child.GetComponent<Renderer>() != null) // On ne traîte pas le trigger : seulement les deux pilones
+                foreach (Transform child in checkpoint)
                 {
-                    Material emissiveMat = child.GetComponent<Renderer>().materials[1]; // Le material de la lampe est le deuxième
+                    if (child.GetComponent<Renderer>() != null) // On ne traîte pas le trigger : seulement les deux piliers
+                    {
+                        Renderer checkpointRenderer = child.GetComponent<Renderer>();
+                        MaterialPropertyBlock checkpointBlock = new MaterialPropertyBlock();
 
-                    if (i == activeCheckpoint)
-                    {
-                        emissiveMat.SetColor("_EmissionColor", new Color(0, 1, 0, 3f));
-                    } else
-                    {
-                        emissiveMat.SetColor("_EmissionColor", new Color(1, 0, 0, 3f));
+                        if (i == playersCheckpoints[j])
+                        {
+                            checkpointBlock.SetColor("CheckpointColor", Settings.configurableColors[Settings.playerColors[j]] * 1.3f);
+                        }
+                        else
+                        {
+                            checkpointBlock.SetColor("CheckpointColor", Color.black);
+                        }
+
+                        checkpointRenderer.SetPropertyBlock(checkpointBlock, j+1); // On applique la couleur au matériau correspondant au joueur j
                     }
                 }
+                i++;
             }
-
-            i++;
         }
     }
 

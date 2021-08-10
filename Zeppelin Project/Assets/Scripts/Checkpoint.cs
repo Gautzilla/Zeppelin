@@ -38,7 +38,7 @@ public class Checkpoint : MonoBehaviour
             int playerIdentifier = other.GetComponent<PlayerMovement>().playerIdentifier;
             int lastActiveCheckpoint = checkpointGroup.lastActiveCheckpoint;
 
-            if (checkpointIdentifier == checkpointGroup.playersCheckpoints[playerIdentifier] + 1) // Si le checkpoint franchi est le checkpoint actif
+            if (checkpointIdentifier == checkpointGroup.playersCheckpoints[playerIdentifier] + 1) // Si le checkpoint franchi est le checkpoint actif pour ce joueur
             {
                 if (checkpointIdentifier == lastActiveCheckpoint + 1) // On active le checkpoint suivant
                 {
@@ -47,6 +47,7 @@ public class Checkpoint : MonoBehaviour
                     checkpointGroup.SetActiveCheckpoint(lastCheckpoint ? 0 : checkpointIdentifier);
                 }
                 checkpointGroup.playersCheckpoints[playerIdentifier] = lastCheckpoint ? 0 : checkpointIdentifier; // Chaque joueur doit passer par les checkpoints dans l'ordre
+                checkpointGroup.SetCheckpointsColors(checkpointIdentifier);
             }
         }
     }
