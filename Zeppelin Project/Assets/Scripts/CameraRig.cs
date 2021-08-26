@@ -136,7 +136,7 @@ public class CameraRig : MonoBehaviour
 
         while (t < timeToRotate)
         {
-            transform.rotation = Quaternion.Euler(xRotation, Mathf.Lerp(baseRotation, yRotation, t / timeToRotate), 0f);
+            transform.rotation = Quaternion.Euler(xRotation, Mathf.SmoothStep(baseRotation, yRotation, t / timeToRotate), 0f);
             t += Time.deltaTime;
             yield return null;
         }

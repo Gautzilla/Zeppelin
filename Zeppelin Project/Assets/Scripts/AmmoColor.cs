@@ -18,7 +18,7 @@ public class AmmoColor : MonoBehaviour
     // Cette méthode est appelée avant Start() lorsqu'on istancie un projectile ou un résidu de projectile
     public void SetAmmoColor(MaterialPropertyBlock playerBlock)
     {
-        playerColor = playerBlock.GetColor("_BaseColor");
+        playerColor = playerBlock.GetColor("_MainColor");
     }
 
     #endregion
@@ -29,7 +29,7 @@ public class AmmoColor : MonoBehaviour
     {
         ammoRenderer = gameObject.GetComponent<Renderer>();
         ammoBlock = new MaterialPropertyBlock();
-        ammoBlock.SetColor("_BaseColor", playerColor); // Donne aux projectiles la même couleur que celle du joueur
+        ammoBlock.SetColor("_MainColor", playerColor); // Donne aux projectiles la même couleur que celle du joueur
         ammoRenderer.SetPropertyBlock(ammoBlock);
     }
 

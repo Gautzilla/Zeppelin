@@ -39,7 +39,7 @@ public class PlayerColor : MonoBehaviour
         playerBlock.SetColor("_EdgeColor", playerEdgeColor);
         playerRenderer.SetPropertyBlock(playerBlock);
 
-        instancesBlock.SetColor("_BaseColor", playerColor);
+        instancesBlock.SetColor("_MainColor", playerColor);
 
         StartCoroutine("FadeInPlayer");
     }

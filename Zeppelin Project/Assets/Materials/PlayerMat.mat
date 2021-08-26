@@ -8,14 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerMat
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7b076a0b0f6310c44913376b8e0a25de,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -78,6 +78,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Vector1_14227587: 10
+    - Vector1_48D6E99B: 0.01
     - _Alpha: 1
     - _AlphaClip: 0
     - _Blend: 0
@@ -88,6 +90,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DissolveProgression: -1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
@@ -113,7 +116,10 @@ Material:
     - Color_A5298205: {r: 2.996078, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 0.45882356, b: 0.5214734, a: 1}
     - _Color: {r: 1, g: 0.45882356, b: 0.5214734, a: 1}
+    - _EdgeColor: {r: 4, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0.63960534, g: 0.019834176, b: 0.032277107, a: 1}
+    - _MainColor: {r: 0.8962264, g: 0.2916963, b: 0.2916963, a: 0}
+    - _ShieldColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5660120554865811382

@@ -622,7 +622,7 @@ PrefabInstance:
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
       propertyPath: timeToRotate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
@@ -1418,6 +1418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
+      propertyPath: timeToRotate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
+        type: 3}
       propertyPath: checkpointGroup
       value: 
       objectReference: {fileID: 1062343074}
@@ -1765,7 +1770,7 @@ PrefabInstance:
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
       propertyPath: timeToRotate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
@@ -1890,6 +1895,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
+        type: 3}
+      propertyPath: yRotation
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
+        type: 3}
+      propertyPath: timeToRotate
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
@@ -2254,7 +2269,7 @@ PrefabInstance:
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
       propertyPath: timeToRotate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
@@ -2404,7 +2419,7 @@ PrefabInstance:
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
       propertyPath: timeToRotate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4605597986594798127, guid: ad6e3376ba3654346a03570f80731a33,
         type: 3}
